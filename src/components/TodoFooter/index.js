@@ -1,7 +1,7 @@
-const TodoFooter = () => {
+const TodoFooter = ({ todoLeft }) => {
   return (
     <div className="todo-footer">
-      <span>5 tasks left!</span>
+      <span>{`${todoLeft} tasks left!`}</span>
     </div>
   );
 };
