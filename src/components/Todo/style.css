@@ -1,0 +1,5 @@
+.todo__text--completed {
+    text-decoration: line-through;
+    color: rgb(193, 191, 191);
+    font-style:italic;
+}
