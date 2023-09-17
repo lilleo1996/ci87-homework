@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
 
 import "./style.css";
 
-const Todo = ({ todo, handleChangeStatus, editTodo }) => {
-  const { isCompleted, id } = todo;
+const Todo = ({ todo, handleChangeStatus, editTodo, handleDeletoTodo }) => {
+  const { isCompleted, id, estPomodoros } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(todo.text);
 
@@ -37,6 +38,10 @@ const Todo = ({ todo, handleChangeStatus, editTodo }) => {
           {text}
         </label>
       )}
+      <label>{estPomodoros}</label>
+      <button onClick={() => handleDeletoTodo(id)}>
+        <AiOutlineDelete />
+      </button>
     </div>
   );
 };
