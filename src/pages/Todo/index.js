@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
-import TodoHeader from "../../components/TodoHeader";
-import TodoList from "../../components/TodoList";
-import TodoFooter from "../../components/TodoFooter";
+import TodoHeader from "./components/TodoHeader";
+import TodoList from "./components/TodoList";
+import TodoFooter from "./components/TodoFooter";
 import { TODOS } from "../../data/todos";
+import ThemeContext from "../../contexts/ThemeContext";
+
+import "./style.css";
 
 const Todo = () => {
   const [todos, setTodos] = useState(TODOS);
   const [filteredTodos, setFilteredTodos] = useState(TODOS);
+  const themeContext = useContext(ThemeContext);
   const countTodoLeft = () => todos.filter((todo) => !todo.isCompleted).length;
 
   useEffect(() => {
@@ -54,8 +58,12 @@ const Todo = () => {
     setTodos(newTodos);
   };
 
+  const todoPageClassName = `todo-page ${
+    themeContext.theme === "light" ? "todo-page--light" : "todo-page--dark"
+  }`;
+
   return (
-    <div className="todo-page">
+    <div className={todoPageClassName}>
       <TodoHeader addTodo={addTodo} />
       <hr />
       <TodoList

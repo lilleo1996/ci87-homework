@@ -1,0 +1,19 @@
+.todo-page{
+    width: 320px;
+    
+}
+
+.todo-page--light {
+    background-color: #F2F3F5;
+    color: #23272F;
+}
+
+.todo-page--dark {
+    background-color: #23272F;
+    color: #F6F7F9;
+}
+
+.todo-page hr {
+    border: 1px solid rgb(85, 85, 85);
+    margin: 16px 0;
+}

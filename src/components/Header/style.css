@@ -1,0 +1,34 @@
+.header {
+    position: absolute;
+    top: 8px;
+    display: flex;
+}
+
+.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.header li {
+    float: left;
+    margin-left: 4px;
+}
+
+.header__link {
+    text-decoration: none;
+    color: #404757;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.header__link--active {
+    color: #2283A8;
+    background-color: #E6F7FF;
+    
+}
+
+.header__theme-btn {
+    margin-left: 32px;
+}
