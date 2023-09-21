@@ -1,0 +1,12 @@
+.todo-list {
+    width: 100%;
+}
+
+.todo-list select {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(85, 85, 85);
+    border: solid 2px rgb(85, 85, 85);
+    border-radius: 2px;
+    padding: 2px;
+  }

@@ -1,0 +1,14 @@
+.home {
+  padding: 36px;
+  border: #23272F 1px solid;
+}
+
+.home--light {
+    background-color: #FFFFFF;
+    color: #23272F;
+}
+
+.home--dark {
+    background-color: #23272F;
+    color: #F6F7F9;
+}

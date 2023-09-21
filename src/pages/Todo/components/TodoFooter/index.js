@@ -1,7 +1,10 @@
+import "./style.css";
+
 const TodoFooter = ({ todoLeft }) => {
   return (
     <div className="todo-footer">
-      <span>{`${todoLeft} tasks left!`}</span>
+      <span className="todo-footer__todo-left">{todoLeft}</span>
+      <span>{" tasks left!"}</span>
     </div>
   );
 };

@@ -1,0 +1,77 @@
+.todo {
+    width: 100%;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+    text-align: left;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: unset;
+    box-shadow: none;
+    transform: translateY(2px);
+    border-left: 6px solid rgb(34, 34, 34);
+    display: flex;
+}
+
+.todo__left {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    padding: 18px 0px 18px 14px;
+    overflow-wrap: break-word;
+    width: 75%; 
+}
+
+.todo__right {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center; 
+}
+
+.todo__check-btn {
+    width: 22px;
+    height: 22px;
+    color: rgb(223, 223, 223);
+    margin-right: 10px;
+}
+
+.todo__check-btn--completed {
+    color: rgb(186, 73, 73);
+}
+
+.todo__text {
+    font-weight: bold;
+    color: rgb(85, 85, 85)
+}
+.todo__text--completed {
+    text-decoration: line-through;
+    color: rgb(187, 187, 187)
+}
+
+.todo__right label {
+    display: inline-block;
+    color: rgb(187, 187, 187);
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 18px;
+    width: 40px;
+    text-align: right;
+}
+
+.todo__delete-btn {
+    width: 30px;
+    padding-right: 14px;
+    text-align: center;
+    height: 24px;
+    color: rgb(187, 187, 187);
+}
+
+.todo__delete-btn:hover {
+    color: (187, 187, 187);
+    height: 28px;
+}
+

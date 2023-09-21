@@ -57,10 +57,12 @@ const TodoHeader = ({ addTodo }) => {
           </div>
         </div>
       ) : (
-        <div className="todo-header__adding-button">
-          <button onClick={() => setIsAdding(true)}>
-            <BsFillPlusCircleFill /> <label>Add Task</label>
-          </button>
+        <div
+          className="todo-header__adding-button"
+          onClick={() => setIsAdding(true)}
+        >
+          <BsFillPlusCircleFill className="todo-header__adding-icon" />{" "}
+          <label>Add Task</label>
         </div>
       )}
     </div>
