@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 
 import TodoHeader from "./components/TodoHeader";
 import TodoList from "./components/TodoList";
@@ -9,7 +10,7 @@ import ThemeContext from "../../contexts/ThemeContext";
 import "./style.css";
 
 const Todo = () => {
-  const [todos, setTodos] = useState(TODOS);
+  const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState(TODOS);
   const themeContext = useContext(ThemeContext);
   const countTodoLeft = () => todos.filter((todo) => !todo.isCompleted).length;
@@ -17,6 +18,18 @@ const Todo = () => {
   useEffect(() => {
     setFilteredTodos(todos);
   }, [todos]);
+
+  const handleFetchTodos = async () => {
+    console.log("fetch");
+    const response = await axios.get(
+      "https://650c557a47af3fd22f677e3f.mockapi.io/todos"
+    );
+    setTodos(response.data);
+  };
+
+  useEffect(() => {
+    handleFetchTodos();
+  }, []);
 
   const handleChangeStatus = (id) => {
     setTodos(
@@ -66,6 +79,7 @@ const Todo = () => {
     <div className={todoPageClassName}>
       <TodoHeader addTodo={addTodo} />
       <hr />
+      <button onClick={handleFetchTodos}>Fetch Todos</button>
       <TodoList
         todos={filteredTodos}
         handleChangeStatus={handleChangeStatus}
