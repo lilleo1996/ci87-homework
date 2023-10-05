@@ -15,15 +15,14 @@ const Todo = () => {
   const themeContext = useContext(ThemeContext);
   const countTodoLeft = () => todos.filter((todo) => !todo.isCompleted).length;
 
+  const TODOS_API = "https://650c557a47af3fd22f677e3f.mockapi.io/todos";
+
   useEffect(() => {
     setFilteredTodos(todos);
   }, [todos]);
 
   const handleFetchTodos = async () => {
-    console.log("fetch");
-    const response = await axios.get(
-      "https://650c557a47af3fd22f677e3f.mockapi.io/todos"
-    );
+    const response = await axios.get(TODOS_API);
     setTodos(response.data);
   };
 
@@ -43,17 +42,32 @@ const Todo = () => {
   };
 
   const addTodo = (todo) => {
-    setTodos((prev) => [...prev, todo]);
+    axios
+      .post(TODOS_API, todo)
+      .then(function (response) {
+        setTodos((prev) => [...prev, response.data]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
-  const editTodo = (id, text) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.text = text;
-      }
-      return todo;
-    });
-    setTodos(newTodos);
+  const editTodo = (todo) => {
+    axios
+      .put(`${TODOS_API}/${todo.id}`, todo)
+      .then(function (response) {
+        console.log(response);
+        const newTodos = todos.map((todo) => {
+          if (todo.id === response.data.id) {
+            todo.text = response.data.text;
+          }
+          return todo;
+        });
+        setTodos(newTodos);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const handleFilterByStatus = (status) => {
@@ -67,8 +81,15 @@ const Todo = () => {
   };
 
   const handleDeletoTodo = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
+    axios
+      .delete(`${TODOS_API}/${id}`)
+      .then(function (response) {
+        const newTodos = todos.filter((todo) => todo.id !== response.data.id);
+        setTodos(newTodos);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const todoPageClassName = `todo-page ${
@@ -79,7 +100,6 @@ const Todo = () => {
     <div className={todoPageClassName}>
       <TodoHeader addTodo={addTodo} />
       <hr />
-      <button onClick={handleFetchTodos}>Fetch Todos</button>
       <TodoList
         todos={filteredTodos}
         handleChangeStatus={handleChangeStatus}
