@@ -15,7 +15,7 @@ const Todo = ({ todo, handleChangeStatus, editTodo, handleDeletoTodo }) => {
   }`;
   const handleEditTodo = (event) => {
     if (event.key === "Enter" && text) {
-      editTodo(id, text);
+      editTodo({ ...todo, text });
       setIsEditing(!isEditing);
     }
   };
